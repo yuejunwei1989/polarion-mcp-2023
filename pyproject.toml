@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polarion-mcp-2023"
+version = "1.0.0"
+description = "Model Context Protocol server for Siemens Polarion ALM, compatible with Polarion 2023 (2304/2310)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Polarion MCP 2023 contributors" }]
+keywords = ["mcp", "polarion", "alm", "siemens", "requirements", "model-context-protocol"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "mcp>=1.9,<2",
+    "requests>=2.28",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyflakes>=3"]
+
+[project.scripts]
+polarion-mcp-2023 = "polarion_mcp_2023.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+addopts = "-q"
